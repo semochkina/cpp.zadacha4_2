@@ -6,8 +6,6 @@
 // Хеш-таблица, представленная в виде массива элементов (которые в свою очередь представляют список).
 class LinkedHashTable : public HashTable {
 private:
-    // размер хеш таблицы
-    static const int DIMENSION_SIZE = 11;
     // простая хеш-функция - остаток от деления на размер массива указателей
     int hash(int key) {
         return key % DIMENSION_SIZE;
@@ -52,7 +50,6 @@ private:
     }
 
 public:
-    HashEntry *table[DIMENSION_SIZE];
     HashEntry *allEntry;
     HashEntry *allEntryLast;
 
@@ -144,10 +141,6 @@ public:
     // проверка таблицы на пустоту
     bool isEmpty() {        
         return allEntry == nullptr;
-    }
-
-    int dimensionSize() {
-        return DIMENSION_SIZE;
     }
 };
 

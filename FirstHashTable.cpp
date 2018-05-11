@@ -6,16 +6,13 @@
 // Хеш-таблица, представленная в виде массива элементов (которые в свою очередь представляют список).
 class FirstHashTable : public HashTable {
 private:
-    // размер хеш таблицы
-    static const int DIMENSION_SIZE = 11;
     // простая хеш-функция - остаток от деления на размер массива указателей
     int hash(int key) {
         return key % DIMENSION_SIZE;
     }
 
 public:
-    HashEntry *table[DIMENSION_SIZE];
-
+   
     FirstHashTable() {
         for (int i = 0; i < DIMENSION_SIZE; i++) {
             table[i] = nullptr;
@@ -63,7 +60,7 @@ public:
         if (result != nullptr) {
             if (result->getKey() == key) {
                 table[hashNumber] = result->getNext();
-                result->setNext(nullptr);
+               // result->setNext(nullptr);
                 delete result;
                 return true;
             }
@@ -74,7 +71,7 @@ public:
                     break;
                 if (result->getKey() == key) {
                     parent->setNext(result->getNext());
-					result->setNext(nullptr);
+					//result->setNext(nullptr);
                     delete result;
                     return true;
                 }
@@ -98,10 +95,6 @@ public:
                 return false;
         }
         return true;
-    }
-
-    int dimensionSize() {
-        return DIMENSION_SIZE;
     }
 };
 

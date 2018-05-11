@@ -6,20 +6,44 @@
 // Хеш-таблица
 class HashTable {
 public:
-    // добавить элемент в таблицу
-    virtual void push(int key, double value) = 0;
 
-    // найти элемент
-    virtual HashEntry *find(int key) = 0;
+	// размер хеш таблицы
+	static const int DIMENSION_SIZE = 11;
+	HashEntry *table[DIMENSION_SIZE];
 
-    // удалить элемент
-    virtual bool del(int key) = 0;
+	// добавить элемент в таблицу
+	virtual void push(int key, double value) = 0;
 
-    // сделать таблицу пустой
-    virtual void clear() = 0;
+	// найти элемент
+	virtual HashEntry *find(int key) = 0;
 
-    // проверка таблицы на пустату
-    virtual bool isEmpty() = 0;
-};
+	// удалить элемент
+	virtual bool del(int key) = 0;
+
+	// сделать таблицу пустой
+	virtual void clear() = 0;
+
+	// проверка таблицы на пустату
+	virtual bool isEmpty() = 0;
+
+	// количество ячеек у хеш-таблицы
+	int dimensionSize() {
+		return DIMENSION_SIZE;
+	}
+
+	// вывести в поток
+	friend std::ostream &operator<<(std::ostream &os, HashTable &element) {
+		for (int i = 0; i < DIMENSION_SIZE; i++) {
+			os << "строка " << i;
+			HashEntry *pEntry = element.table[i];
+			while (pEntry != nullptr) {
+				os << (pEntry == element.table[i] ? ": " : ", ") << *pEntry;
+				pEntry = pEntry->getNext();
+			}
+			os << "\n";
+		}
+	}
+
+}
 
 #endif

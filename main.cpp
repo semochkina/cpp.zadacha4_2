@@ -13,6 +13,7 @@ void start(HashTable *newTable, Iterator *iterator) {
 	newTable->push(3, 3.3);
     newTable->push(1, 1.1);
 	newTable->push(12, 12.12);
+	newTable->push(13, 44);
 
     newTable->del(4);
 
@@ -21,7 +22,8 @@ void start(HashTable *newTable, Iterator *iterator) {
         std::cout << "search - " << search->getValue() << std::endl;
     }
 
-    std::cout << *iterator << std::endl;
+    std::cout << *newTable << std::endl;
+	std::cout << *iterator << std::endl;
 
     std::cout << "isEmpty() - " << newTable->isEmpty() << std::endl;
     std::cout << "clear()" << std::endl;
