@@ -34,7 +34,7 @@ public:
 	// вывести в поток
 	friend std::ostream &operator<<(std::ostream &os, HashTable &element) {
 		for (int i = 0; i < DIMENSION_SIZE; i++) {
-			os << "строка " << i;
+			os << "Row " << i;
 			HashEntry *pEntry = element.table[i];
 			while (pEntry != nullptr) {
 				os << (pEntry == element.table[i] ? ": " : ", ") << *pEntry;
@@ -42,8 +42,9 @@ public:
 			}
 			os << "\n";
 		}
+		return os;
 	}
 
-}
+};
 
 #endif
